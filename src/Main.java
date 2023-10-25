@@ -3,20 +3,55 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Podaj ilosc liczb zawartych w tablicy: ");
         Scanner scanner = new Scanner(System.in);
-        int SIZE = scanner.nextInt();
-        System.out.println("Podaj wartosc minimalna");
-        int min = scanner.nextInt();
-        System.out.println("Podaj wartosc maksymalna");
-        int max = scanner.nextInt();
-        double[] array = fillArray(SIZE,min,max);
-        System.out.println(" ");
-        insertionSort(array);
-        for (int i = 0; i < array.length; i++) {
-            System.out.print((array)[i]+", ");
+        boolean petla = true;
+        while (petla == true) {
+            System.out.println("Wybierz opcje: ");
+            System.out.println("1. Generowanie tablicy o podanym rozmiarze");
+            System.out.println("2. Podanie liczb ręcznie po kolei do tablicy o podanym rozmiarze");
+            System.out.println("0. Wyjscie z programu");
+            int number = scanner.nextInt();
+            switch (number) {
+                case 1:
+                    System.out.println("Podaj ilosc liczb zawartych w tablicy: ");
+                    int SIZE = scanner.nextInt();
+                    System.out.println("Podaj wartosc minimalna");
+                    int min = scanner.nextInt();
+                    System.out.println("Podaj wartosc maksymalna");
+                    int max = scanner.nextInt();
+                    double[] array = fillArray(SIZE,min,max);
+                    System.out.println(" ");
+                    insertionSort(array);
+                    for (int i = 0; i < array.length; i++) {
+                        System.out.print((array)[i] + ", ");
+                    }
+                    break;
+                case 2:
+                    System.out.println("Podaj ilosc liczb zawartych w tablicy: ");
+                    SIZE = scanner.nextInt();
+                    double tablica[] = new double[SIZE];
+                    for (int i =0; i<SIZE;i++) {
+                        System.out.println("Podaj kolejna liczbe");
+                        tablica[i]=scanner.nextDouble();
+
+                    }
+                    System.out.println(" ");
+                    insertionSort(tablica);
+                    for (int i = 0; i < tablica.length; i++) {
+                        System.out.print((tablica)[i] + ", ");
+                    }
+                    System.out.println("");
+                    break;
+                case 0:
+                    System.out.println("Wyjscie z programu");
+                    petla = false;
+                    break;
+            }
+
         }
     }
+
+
     public static void insertionSort(double[] doublearray) {
         double temp;
         int n = doublearray.length;
