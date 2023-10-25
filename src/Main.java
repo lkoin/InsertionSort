@@ -1,10 +1,12 @@
 import java.util.Random;
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean petla = true;
+            boolean petla = true;
         while (petla == true) {
             System.out.println("Wybierz opcje: ");
             System.out.println("1. Generowanie tablicy o podanym rozmiarze");
@@ -32,7 +34,9 @@ public class Main {
                     double tablica[] = new double[SIZE];
                     for (int i =0; i<SIZE;i++) {
                         System.out.println("Podaj kolejna liczbe");
-                        tablica[i]=scanner.nextDouble();
+//                        tablica[i]=scanner.nextDouble();
+
+
 
                     }
                     System.out.println(" ");
@@ -83,4 +87,22 @@ public class Main {
             System.out.print(array[i] + ", ");
         }
         return array;
-    }}
+    }
+    public static double loadNumber(Scanner scanner) {
+        String strNumber = scanner.nextLine();
+        boolean isNumber = true;
+        for (int i=0;i<strNumber.length();i++) {
+            if (strNumber.charAt(i) < 48 || strNumber.charAt(i) > 57) {
+                System.out.println("Wpisana liczba jest nie prawidlowa");
+                isNumber = false;
+                break;
+            }
+        }
+
+
+        if (isNumber) {
+            return parseInt(strNumber);
+        }
+        else return loadNumber(scanner);
+    }
+}
