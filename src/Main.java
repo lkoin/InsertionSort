@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 public class Main {
@@ -34,7 +35,7 @@ public class Main {
                     double tablica[] = new double[SIZE];
                     for (int i =0; i<SIZE;i++) {
                         System.out.println("Podaj kolejna liczbe");
-//                        tablica[i]=scanner.nextDouble();
+                        tablica[i]= loadNumber(scanner);
 
 
 
@@ -101,7 +102,8 @@ public class Main {
 
 
         if (isNumber) {
-            return parseInt(strNumber);
+            System.out.println("Podaj liczbe: ");
+            return parseDouble(strNumber);
         }
         else return loadNumber(scanner);
     }
